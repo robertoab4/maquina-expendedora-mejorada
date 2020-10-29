@@ -6,6 +6,8 @@ public class MaquinaExpendedoraMejorada {
     private int balanceClienteActual;
     // El total de dinero almacenado en la maquina desde su ultimo vaciado
     private int totalDineroAcumulado;
+    // El total de billetes impresos
+    private int contadorBilletes;
     // El origen del billete
     private String estacionOrigen;
     // El destino del billete
@@ -55,7 +57,7 @@ public class MaquinaExpendedoraMejorada {
      */
     public void imprimirBillete() {
         int cantidadDeDineroQueFalta = precioBillete - balanceClienteActual;
-        
+        contadorBilletes = contadorBilletes + 1;
         if (cantidadDeDineroQueFalta <= 0) {        
             // Simula la impresion de un billete
             System.out.println("##################");
@@ -103,5 +105,18 @@ public class MaquinaExpendedoraMejorada {
         }
         return vaciadoDeLaMaquina;
     }   
-        
+    
+    /**
+     * Devuelve el numero de billetes vendidos
+     */
+    public int getNumeroBilletesVendidos () {   
+        return contadorBilletes;        
+    }   
+    
+    /**
+     * Imprime por pantalla el numero de billetes vendidos
+     */
+    public void imprimeNumeroBilletesVendidos () {   
+        System.out.println("Lleva " + contadorBilletes + " billetes vendidos");        
+    }   
 }
