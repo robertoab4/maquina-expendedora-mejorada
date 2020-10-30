@@ -49,7 +49,8 @@ public class MaquinaExpendedoraMejorada {
         }
         else {
             System.out.println(cantidadIntroducida + " no es una cantidad de dinero valida.");
-        }        
+            System.out.println(); 
+        }
     }
 
     /**
@@ -57,7 +58,6 @@ public class MaquinaExpendedoraMejorada {
      */
     public void imprimirBillete() {
         int cantidadDeDineroQueFalta = precioBillete - balanceClienteActual;
-        contadorBilletes = contadorBilletes + 1;
         if (cantidadDeDineroQueFalta <= 0) {        
             // Simula la impresion de un billete
             System.out.println("##################");
@@ -65,8 +65,10 @@ public class MaquinaExpendedoraMejorada {
             System.out.println("# De " + estacionOrigen + " a " + estacionDestino);
             System.out.println("# " + precioBillete + " euros.");
             System.out.println("##################");
-            System.out.println();         
-    
+            System.out.println();   
+            
+            //Se cuenta el numero de billetes vendidos
+            contadorBilletes = contadorBilletes + 1;
             // Actualiza el total de dinero acumulado en la maquina
             totalDineroAcumulado = totalDineroAcumulado + precioBillete;
             // Reduce el balance del cliente actual dejandole seguir utilizando la maquina
@@ -74,7 +76,7 @@ public class MaquinaExpendedoraMejorada {
         }
         else {
             System.out.println("Necesitas introducir " + cantidadDeDineroQueFalta + " euros mas!");
-                    
+            System.out.println();         
         }            
     }
     
@@ -96,6 +98,7 @@ public class MaquinaExpendedoraMejorada {
         int vaciadoDeLaMaquina;
         if (balanceClienteActual > 0) {
             System.out.println("Error - Operación en curso");
+            System.out.println();   
             vaciadoDeLaMaquina = -1;
         } 
         else {
@@ -116,7 +119,14 @@ public class MaquinaExpendedoraMejorada {
     /**
      * Imprime por pantalla el numero de billetes vendidos
      */
-    public void imprimeNumeroBilletesVendidos () {   
-        System.out.println("Lleva " + contadorBilletes + " billetes vendidos");        
-    }   
+    public void imprimeNumeroBilletesVendidos () {
+        if (contadorBilletes > 0) { 
+            System.out.println("Lleva " + contadorBilletes + " billetes vendidos");   
+            System.out.println();   
+        }
+        else {
+            System.out.println("Lleva 0 billetes vendidos");
+            System.out.println(); 
+        }
+    }
 }
